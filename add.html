@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Add Item</title>
+  </head>
+  <body>
+    <div class="container">
+      <h5>Add Item</h5>
+      <form>
+        <div class="field">
+          <label for="">Item Name</label>
+          <input type="text" name="item" id="item" autofocus />
+        </div>
+        <button type="submit" class="btn waves-effect waves-light">Add</button>
+      </form>
+    </div>
+
+    <script>
+      const electron = require("electron");
+      const { ipcRenderer } = electron;
+
+      const form = document.querySelector("form");
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+        const item = document.querySelector("#item").value;
+        ipcRenderer.send("item__add", item);
+      });
+    </script>
+  </body>
+</html>
