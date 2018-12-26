@@ -79,7 +79,7 @@ const mainMenuTemplate = [
   }
 ];
 
-//If MacOS, push an empty array to Menu
+//If MacOS, push an empty object to Menu
 if (process.platform == "darwin") {
   mainMenuTemplate.unshift({});
 }
